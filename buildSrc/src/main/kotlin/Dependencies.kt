@@ -10,6 +10,7 @@ object DependencyVersion {
     const val composeMaterial3 = "1.0.0-alpha03"
     const val composeActivity = "1.4.0"
     const val composeNavigation = "2.4.0"
+    const val composeSystemUi = "0.24.1-alpha"
 }
 
 object Dependency {
@@ -28,6 +29,7 @@ object Dependency {
     const val androidxComposeActivity = "androidx.activity:activity-compose:${DependencyVersion.composeActivity}"
     const val androidxComposeNavigation = "androidx.navigation:navigation-compose:${DependencyVersion.composeNavigation}"
     const val androidxComposeViewModel = "androidx.lifecycle:lifecycle-viewmodel-compose:${DependencyVersion.composeNavigation}"
+    const val composeSystemUi = "com.google.accompanist:accompanist-systemuicontroller:${DependencyVersion.composeSystemUi}"
 }
 
 fun DependencyHandler.androidCore() {
@@ -58,6 +60,7 @@ fun DependencyHandler.compose() {
     impl(Dependency.androidxComposeActivity)
     impl(Dependency.androidxComposeNavigation)
     impl(Dependency.androidxComposeViewModel)
+    impl(Dependency.composeSystemUi)
     test(Test.androidxComposeJUnit, isUiTest = true)
     apply(Test.androidxComposeTooling, ImplType.DebugImpl)
 }
