@@ -19,7 +19,7 @@ import com.splanes.core.theme.typography.scheme.ThemeTypographyScheme
 object Theme {
 
     private var customThemeContract: ThemeContract? = null
-    private val themeContract: ThemeContract get() = customThemeContract ?: DefaultTheme
+    private val themeContract: ThemeContract get() = customThemeContract ?: DefaultTheme.Contract
 
     fun init(contract: ThemeContract) {
         this.customThemeContract = contract
@@ -109,24 +109,3 @@ object Theme {
         }
     }
 }
-
-inline val ThemeColors: ThemeColorScheme
-    @Composable
-    @ReadOnlyComposable
-    get() = Theme.Colors
-
-inline val ThemeColorsMaterial: MaterialColorScheme
-    @Composable
-    @ReadOnlyComposable
-    get() = Theme.ColorsMaterial
-
-inline val ThemeTypographies: ThemeTypographyScheme
-    @Composable
-    @ReadOnlyComposable
-    get() = Theme.Typographies
-
-inline val ThemeDistances: ThemeDistanceScheme
-    @Composable
-    @ReadOnlyComposable
-    get() = Theme.Distances
-

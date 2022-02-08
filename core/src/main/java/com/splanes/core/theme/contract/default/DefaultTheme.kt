@@ -7,11 +7,14 @@ import com.splanes.core.theme.distance.default.DefaultThemeDistanceScheme
 import com.splanes.core.theme.shape.default.DefaultThemeShapeScheme
 import com.splanes.core.theme.typography.default.DefaultThemeTypographyScheme
 
-inline val DefaultTheme: ThemeContract get() =
-    ThemeContract.create(
-        lightColorScheme = DefaultThemeColorSchemeLight,
-        darkColorScheme = DefaultThemeColorSchemeDark,
-        shapeScheme = DefaultThemeShapeScheme,
-        typographyScheme = DefaultThemeTypographyScheme,
-        distanceScheme = DefaultThemeDistanceScheme,
-    )
+object DefaultTheme {
+    val Contract: ThemeContract by lazy {
+        ThemeContract.create(
+            lightColorScheme = DefaultThemeColorSchemeLight,
+            darkColorScheme = DefaultThemeColorSchemeDark,
+            shapeScheme = DefaultThemeShapeScheme,
+            typographyScheme = DefaultThemeTypographyScheme,
+            distanceScheme = DefaultThemeDistanceScheme,
+        )
+    }
+}

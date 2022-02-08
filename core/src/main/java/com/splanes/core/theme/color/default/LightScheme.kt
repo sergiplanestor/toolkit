@@ -3,55 +3,55 @@ package com.splanes.core.theme.color.default
 import androidx.compose.ui.graphics.Color
 import com.splanes.core.theme.color.scheme.ThemeColorScheme
 
-inline val defaultLightColorPrimary: Color get() = Palette.Red.Tosca
-inline val defaultLightColorOnPrimary: Color get() = Palette.Basic.WhiteSoapstone
-inline val defaultLightColorPrimaryContainer: Color get() = Palette.Red.LightCoral
-inline val defaultLightColorOnPrimaryContainer: Color get() = Palette.Gray.MineShaft
-inline val defaultLightColorInversePrimary: Color get() = Palette.Red.Tosca
+val defaultLightColorPrimary: Color by lazy { Palette.Red.Tosca }
+val defaultLightColorOnPrimary: Color by lazy { Palette.Basic.WhiteSoapstone }
+val defaultLightColorPrimaryContainer: Color by lazy { Palette.Red.LightCoral }
+val defaultLightColorOnPrimaryContainer: Color by lazy { Palette.Gray.MineShaft }
+val defaultLightColorInversePrimary: Color by lazy { Palette.Red.Tosca }
 
-inline val defaultLightColorSecondary: Color get() = Palette.Red.CrownOfThrones
-inline val defaultLightColorOnSecondary: Color get() = Palette.Basic.WhiteSoapstone
-inline val defaultLightColorSecondaryContainer: Color get() = Palette.Red.ChestnutRose
-inline val defaultLightColorOnSecondaryContainer: Color get() = Palette.Gray.Mercury
+val defaultLightColorSecondary: Color by lazy { Palette.Red.CrownOfThrones }
+val defaultLightColorOnSecondary: Color by lazy { Palette.Basic.WhiteSoapstone }
+val defaultLightColorSecondaryContainer: Color by lazy { Palette.Red.ChestnutRose }
+val defaultLightColorOnSecondaryContainer: Color by lazy { Palette.Gray.Mercury }
 
-inline val defaultLightColorTertiary: Color get() = Palette.Orange.Koromiko
-inline val defaultLightColorOnTertiary: Color get() = Palette.Gray.MineShaft
-inline val defaultLightColorTertiaryContainer: Color get() = Palette.Orange.NavajoWhite
-inline val defaultLightColorOnTertiaryContainer: Color get() = Palette.Gray.MineShaft
+val defaultLightColorTertiary: Color by lazy { Palette.Orange.Koromiko }
+val defaultLightColorOnTertiary: Color by lazy { Palette.Gray.MineShaft }
+val defaultLightColorTertiaryContainer: Color by lazy { Palette.Orange.NavajoWhite }
+val defaultLightColorOnTertiaryContainer: Color by lazy { Palette.Gray.MineShaft }
 
-inline val defaultLightColorBackground: Color get() = Palette.Basic.WhiteSoapstone
-inline val defaultLightColorOnBackground: Color get() = Palette.Gray.RaisinBlack
+val defaultLightColorBackground: Color by lazy { Palette.Basic.WhiteSoapstone }
+val defaultLightColorOnBackground: Color by lazy { Palette.Gray.RaisinBlack }
 
-inline val defaultLightColorSurface: Color get() = Palette.Basic.WhiteSoapstone
-inline val defaultLightColorOnSurface: Color get() = Palette.Gray.RaisinBlack
-inline val defaultLightColorSurfaceVariant: Color get() = Palette.Orange.Champagne
-inline val defaultLightColorOnSurfaceVariant: Color get() = Palette.Orange.CapePalliser
-inline val defaultLightColorInverseSurface: Color get() = Palette.Gray.RaisinBlack
-inline val defaultLightColorInverseOnSurface: Color get() = Palette.Basic.WhiteSoapstone
+val defaultLightColorSurface: Color by lazy { Palette.Basic.WhiteSoapstone }
+val defaultLightColorOnSurface: Color by lazy { Palette.Gray.RaisinBlack }
+val defaultLightColorSurfaceVariant: Color by lazy { Palette.Orange.Champagne }
+val defaultLightColorOnSurfaceVariant: Color by lazy { Palette.Orange.CapePalliser }
+val defaultLightColorInverseSurface: Color by lazy { Palette.Gray.RaisinBlack }
+val defaultLightColorInverseOnSurface: Color by lazy { Palette.Basic.WhiteSoapstone }
 
-inline val defaultLightColorError: Color get() = Palette.Red.MexicanRed
-inline val defaultLightColorOnError: Color get() = Palette.Basic.WhiteSoapstone
-inline val defaultLightColorErrorContainer: Color get() = Palette.Red.CornflowerLilac
-inline val defaultLightColorOnErrorContainer: Color get() = Palette.Red.DarkChocolate
+val defaultLightColorError: Color by lazy { Palette.Red.MexicanRed }
+val defaultLightColorOnError: Color by lazy { Palette.Basic.WhiteSoapstone }
+val defaultLightColorErrorContainer: Color by lazy { Palette.Red.CornflowerLilac }
+val defaultLightColorOnErrorContainer: Color by lazy { Palette.Red.DarkChocolate }
 
-inline val defaultLightColorWarning: Color get() = Palette.Orange.NavajoWhite
-inline val defaultLightColorOnWarning: Color get() = Palette.Gray.RaisinBlack
-inline val defaultLightColorWarningContainer: Color get() = Palette.Orange.CapePalliser
-inline val defaultLightColorOnWarningContainer: Color get() = Palette.Gray.MineShaft
+val defaultLightColorWarning: Color by lazy { Palette.Orange.NavajoWhite }
+val defaultLightColorOnWarning: Color by lazy { Palette.Gray.RaisinBlack }
+val defaultLightColorWarningContainer: Color by lazy { Palette.Orange.CapePalliser }
+val defaultLightColorOnWarningContainer: Color by lazy { Palette.Gray.MineShaft }
 
-inline val defaultLightColorSuccess: Color get() = Palette.Green.Conifer
-inline val defaultLightColorOnSuccess: Color get() = Palette.Gray.MineShaft
-inline val defaultLightColorSuccessContainer: Color get() = Palette.Green.Coriander
-inline val defaultLightColorOnSuccessContainer: Color get() = Palette.Gray.MineShaft
+val defaultLightColorSuccess: Color by lazy { Palette.Green.Conifer }
+val defaultLightColorOnSuccess: Color by lazy { Palette.Gray.MineShaft }
+val defaultLightColorSuccessContainer: Color by lazy { Palette.Green.Coriander }
+val defaultLightColorOnSuccessContainer: Color by lazy { Palette.Gray.MineShaft }
 
-inline val defaultLightColorInfo: Color get() = Palette.Blue.Royal
-inline val defaultLightColorOnInfo: Color get() = Palette.Gray.Mercury
-inline val defaultLightColorInfoContainer: Color get() = Palette.Blue.VistaBlue
-inline val defaultLightColorOnInfoContainer: Color get() = Palette.Gray.Mercury
+val defaultLightColorInfo: Color by lazy { Palette.Blue.Royal }
+val defaultLightColorOnInfo: Color by lazy { Palette.Gray.Mercury }
+val defaultLightColorInfoContainer: Color by lazy { Palette.Blue.VistaBlue }
+val defaultLightColorOnInfoContainer: Color by lazy { Palette.Gray.Mercury }
 
-inline val defaultLightColorOutline: Color get() = Palette.Gray.DimGray
+val defaultLightColorOutline: Color by lazy { Palette.Gray.DimGray }
 
-inline val DefaultThemeColorSchemeLight: ThemeColorScheme get() =
+val DefaultThemeColorSchemeLight: ThemeColorScheme by lazy {
     ThemeColorScheme(
         primary = defaultLightColorPrimary,
         onPrimary = defaultLightColorOnPrimary,
@@ -92,3 +92,4 @@ inline val DefaultThemeColorSchemeLight: ThemeColorScheme get() =
         onInfoContainer = defaultLightColorOnInfoContainer,
         outline = defaultLightColorOutline
     )
+}

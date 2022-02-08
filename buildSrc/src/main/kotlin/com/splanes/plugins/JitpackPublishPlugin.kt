@@ -20,7 +20,7 @@ class JitpackPublishPlugin : org.gradle.api.Plugin<org.gradle.api.Project> {
         val src by project.tasks.creating(org.gradle.api.tasks.bundling.Jar::class) {
             group = org.gradle.api.plugins.JavaBasePlugin.DOCUMENTATION_GROUP
             description = JAR_DESCRIPTION
-            archiveClassifier.set(JAR_ARCHIVE_CLASSIFIER)
+            //archiveClassifier.set(JAR_ARCHIVE_CLASSIFIER)
             from(project.sources())
         }
 
