@@ -23,7 +23,7 @@ android {
 
     composeOptions { kotlinCompilerExtensionVersion = DependencyVersion.compose }
 
-    excludeCommonPackages()
+    //excludeCommonPackages()
 }
 
 dependencies {
@@ -40,16 +40,26 @@ dependencies {
     test()
 }
 
-val sourcesJar by tasks.creating(Jar::class) {
-    group = JavaBasePlugin.DOCUMENTATION_GROUP
-    description = "Assembles sources JAR"
-    archiveClassifier.set("sources")
-    from(project.android.sourceSets.getByName("main").java.srcDirs)
-}
-
-artifacts { archives(sourcesJar) }
-
 afterEvaluate {
+
+    val sourcesJar by tasks.creating(Jar::class) {
+        group = JavaBasePlugin.DOCUMENTATION_GROUP
+        description = "Assembles sources JAR"
+        archiveClassifier.set("sources")
+        from(project.android.sourceSets.getByName("main").java.srcDirs)
+    }
+
+    artifacts { archives(sourcesJar) }
+
+    fun MavenPublication.applyConfig() {
+        from(components["release"])
+        artifact(sourcesJar)
+
+        groupId = "com.github.sergiplanestor"
+        artifactId = project.name
+        version = BuildVersion.name
+    }
+
     publishing {
         publications {
             create<MavenPublication>("release") { applyConfig() }
@@ -57,11 +67,3 @@ afterEvaluate {
     }
 }
 
-fun MavenPublication.applyConfig() {
-    from(components["release"])
-    artifact(sourcesJar)
-
-    groupId = "com.github.sergiplanestor"
-    artifactId = project.name
-    version = BuildVersion.name
-}
