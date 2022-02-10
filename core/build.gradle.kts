@@ -1,11 +1,11 @@
 plugins {
-    libPlugins().forEach(::id)
+    libPlugins(GradlePlugin.Other("maven-publish")).forEach(::id)
 }
 
-apply<com.splanes.plugins.JitpackPublishPlugin>()
+/*apply<com.splanes.plugins.JitpackPublishPlugin>()
 configure<com.splanes.plugins.JitpackPublishPluginExtension> {
     artifactVersion.set(project.property("lib.core.version") as String)
-}
+}*/
 
 android {
 
@@ -38,4 +38,17 @@ dependencies {
     compose()
 
     test()
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                groupId = "com.toolkitcompose"
+                artifactId = "core"
+                version = "1.0.1"
+                from(components["release"])
+            }
+        }
+    }
 }
