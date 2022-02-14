@@ -22,8 +22,6 @@ android {
     withFeatures(Feature.Compose)
 
     composeOptions { kotlinCompilerExtensionVersion = DependencyVersion.compose }
-
-    //excludeCommonPackages()
 }
 
 dependencies {

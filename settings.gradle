@@ -15,3 +15,6 @@ dependencyResolutionManagement {
 rootProject.name = "ToolKitCompose"
 include ':app'
 include ':core'
+include ':ui:theme'
+include ':ui:base-arch'
+include ':ui:components'

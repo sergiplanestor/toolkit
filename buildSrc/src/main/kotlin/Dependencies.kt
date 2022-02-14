@@ -6,8 +6,12 @@ object DependencyVersion {
     const val androidxExtensions = "2.2.0"
     const val androidxViewModel = "2.4.0"
     const val kotlinCoroutines = "1.6.0"
+
+    const val timberLogger = "5.0.1"
+
     const val compose = "1.1.0-rc03"
-    const val composeMaterial3 = "1.0.0-alpha03"
+    const val composeMaterial = "1.2.0-alpha02"
+    const val composeMaterial3 = "1.0.0-alpha04"
     const val composeActivity = "1.4.0"
     const val composeNavigation = "2.4.0"
     const val composeSystemUi = "0.24.1-alpha"
@@ -23,7 +27,10 @@ object Dependency {
     const val kotlinCoroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${DependencyVersion.kotlinCoroutines}"
     const val kotlinCoroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${DependencyVersion.kotlinCoroutines}"
 
+    const val timberLogger = "com.jakewharton.timber:timber:${DependencyVersion.timberLogger}"
+
     const val androidxComposeUi = "androidx.compose.ui:ui:${DependencyVersion.compose}"
+    const val androidxComposeMaterial = "androidx.compose.material:material:${DependencyVersion.composeMaterial}"
     const val androidxComposeMaterial3 = "androidx.compose.material3:material3:${DependencyVersion.composeMaterial3}"
     const val androidxComposeUiPreview = "androidx.compose.ui:ui-tooling-preview:${DependencyVersion.compose}"
     const val androidxComposeActivity = "androidx.activity:activity-compose:${DependencyVersion.composeActivity}"
@@ -53,8 +60,13 @@ fun DependencyHandler.ktxCoroutines() {
     impl(Dependency.kotlinCoroutinesAndroid)
 }
 
+fun DependencyHandler.timber() {
+    impl(Dependency.timberLogger)
+}
+
 fun DependencyHandler.compose() {
     impl(Dependency.androidxComposeUi)
+    impl(Dependency.androidxComposeMaterial)
     impl(Dependency.androidxComposeMaterial3)
     impl(Dependency.androidxComposeUiPreview)
     impl(Dependency.androidxComposeActivity)
