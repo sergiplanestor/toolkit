@@ -13,11 +13,12 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/buildSrc" />
+            <option value="$PROJECT_DIR$/compose" />
+            <option value="$PROJECT_DIR$/compose/base-arch" />
+            <option value="$PROJECT_DIR$/compose/ui" />
+            <option value="$PROJECT_DIR$/compose/ui/components" />
+            <option value="$PROJECT_DIR$/compose/ui/theme" />
             <option value="$PROJECT_DIR$/core" />
-            <option value="$PROJECT_DIR$/ui" />
-            <option value="$PROJECT_DIR$/ui/base-arch" />
-            <option value="$PROJECT_DIR$/ui/components" />
-            <option value="$PROJECT_DIR$/ui/theme" />
           </set>
         </option>
       </GradleProjectSettings>

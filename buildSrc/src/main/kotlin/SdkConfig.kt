@@ -3,6 +3,6 @@ object SdkConfig {
     const val compile = 31
     const val target = compile
     const val buildTools = "30.0.3"
-    const val appId = "com.splanes.toolkitcompose"
+    const val appId = "com.splanes.toolkit"
     const val instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 }

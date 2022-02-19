@@ -4,7 +4,7 @@ plugins {
 
 android {
 
-    namespace = "com.splanes.toolkitcompose"
+    namespace = "com.splanes.toolkit"
 
     applyAppDefaultConfig()
 
@@ -23,8 +23,6 @@ dependencies {
 
     androidCore()
     androidRuntime()
-
-    compose()
 
     test()
 }

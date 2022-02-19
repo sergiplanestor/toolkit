@@ -13,7 +13,8 @@ object DependencyVersion {
     const val composeMaterial = "1.2.0-alpha02"
     const val composeMaterial3 = "1.0.0-alpha04"
     const val composeActivity = "1.4.0"
-    const val composeNavigation = "2.4.0"
+    const val composeNavigation = "2.5.0-alpha02"
+    const val composeAccompanistNavigationAnim = "0.24.2-alpha"
     const val composeSystemUi = "0.24.1-alpha"
 }
 
@@ -35,6 +36,7 @@ object Dependency {
     const val androidxComposeUiPreview = "androidx.compose.ui:ui-tooling-preview:${DependencyVersion.compose}"
     const val androidxComposeActivity = "androidx.activity:activity-compose:${DependencyVersion.composeActivity}"
     const val androidxComposeNavigation = "androidx.navigation:navigation-compose:${DependencyVersion.composeNavigation}"
+    const val composeAccompanistNavigationAnim = "com.google.accompanist:accompanist-navigation-animation:${DependencyVersion.composeAccompanistNavigationAnim}"
     const val androidxComposeViewModel = "androidx.lifecycle:lifecycle-viewmodel-compose:${DependencyVersion.composeNavigation}"
     const val composeSystemUi = "com.google.accompanist:accompanist-systemuicontroller:${DependencyVersion.composeSystemUi}"
 }
@@ -64,17 +66,48 @@ fun DependencyHandler.timber() {
     impl(Dependency.timberLogger)
 }
 
-fun DependencyHandler.compose() {
+fun DependencyHandler.composeBase(isMaterial3: Boolean = true) {
     impl(Dependency.androidxComposeUi)
-    impl(Dependency.androidxComposeMaterial)
-    impl(Dependency.androidxComposeMaterial3)
-    impl(Dependency.androidxComposeUiPreview)
     impl(Dependency.androidxComposeActivity)
-    impl(Dependency.androidxComposeNavigation)
-    impl(Dependency.androidxComposeViewModel)
-    impl(Dependency.composeSystemUi)
+    impl(Dependency.androidxComposeUiPreview)
+    composeMaterial()
+    if (isMaterial3) composeMaterial3()
+
     test(Test.androidxComposeJUnit, isUiTest = true)
+
     apply(Test.androidxComposeTooling, ImplType.DebugImpl)
+}
+
+fun DependencyHandler.composeMaterial() {
+    impl(Dependency.androidxComposeMaterial)
+}
+
+fun DependencyHandler.composeMaterial3() {
+    impl(Dependency.androidxComposeMaterial3)
+}
+
+fun DependencyHandler.composeNavigation(isNavAnim: Boolean = true) {
+    impl(Dependency.androidxComposeNavigation)
+    if (isNavAnim) composeNavigationAnim()
+}
+
+fun DependencyHandler.composeNavigationAnim() {
+    impl(Dependency.composeAccompanistNavigationAnim)
+}
+
+fun DependencyHandler.composeViewModel() {
+    impl(Dependency.androidxComposeViewModel)
+}
+
+fun DependencyHandler.composeSystemUi() {
+    impl(Dependency.composeSystemUi)
+}
+
+fun DependencyHandler.compose() {
+    composeBase()
+    composeNavigation()
+    composeViewModel()
+    composeSystemUi()
 }
 
 fun DependencyHandler.test() {

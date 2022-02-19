@@ -12,9 +12,10 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "ToolKitCompose"
+rootProject.name = "ToolKit"
 include ':app'
-include ':core'
-include ':ui:theme'
-include ':ui:base-arch'
-include ':ui:components'
+include ':core' // TODO <- Delete
+include ':compose:ui:theme'
+include ':compose:ui:components'
+include ':compose:base-arch'
+include ':compose'
