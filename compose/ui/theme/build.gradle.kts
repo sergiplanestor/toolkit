@@ -4,7 +4,7 @@ plugins {
 
 apply<com.splanes.plugins.JitpackPublishPlugin>()
 configure<com.splanes.plugins.JitpackPublishPluginExtension> {
-    artifactVersion.set(project.property("lib.ui.theme.version") as String)
+    artifactVersion.set(project.property("lib.compose.ui.theme.version") as String)
 }
 
 android {

@@ -12,6 +12,10 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/base" />
+            <option value="$PROJECT_DIR$/base/extensions" />
+            <option value="$PROJECT_DIR$/base/logger" />
+            <option value="$PROJECT_DIR$/base/test" />
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/compose" />
             <option value="$PROJECT_DIR$/compose/base-arch" />

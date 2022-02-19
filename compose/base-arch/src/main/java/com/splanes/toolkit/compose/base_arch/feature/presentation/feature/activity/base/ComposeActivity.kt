@@ -13,6 +13,7 @@ import com.google.accompanist.systemuicontroller.SystemUiController
 import com.splanes.toolkit.compose.base_arch.feature.presentation.feature.activity.base.config.ComposeActivityConfig
 import com.splanes.toolkit.compose.base_arch.feature.presentation.feature.activity.base.logger.LifecycleLogger
 import com.splanes.toolkit.compose.base_arch.feature.presentation.feature.activity.base.logger.plantLifecycleObserver
+import com.splanes.toolkit.compose.base_arch.feature.presentation.feature.activity.statusbar.DefaultStatusBarUiModel
 import timber.log.Timber
 
 abstract class ComposeActivity : ComponentActivity() {
@@ -24,7 +25,8 @@ abstract class ComposeActivity : ComponentActivity() {
     val snackBarHostState by lazy { SnackbarHostState() }
     val statusBarState by lazy { mutableStateOf(activityConfig.statusBarUiModel) }
 
-    abstract val activityConfig: ComposeActivityConfig
+    open lateinit var activityConfig: ComposeActivityConfig
+
     @Composable
     abstract fun ActivityComponent()
 
@@ -47,6 +49,7 @@ abstract class ComposeActivity : ComponentActivity() {
 
     protected open fun onCreateActivityComponent() {
         setContent {
+            activityConfig = ComposeActivityConfig(statusBarUiModel = DefaultStatusBarUiModel)
             StatusBarColor()
             ActivityComponentWrapper()
         }

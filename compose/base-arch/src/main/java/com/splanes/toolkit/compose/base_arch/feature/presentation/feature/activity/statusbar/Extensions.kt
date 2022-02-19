@@ -1,5 +1,7 @@
 package com.splanes.toolkit.compose.base_arch.feature.presentation.feature.activity.statusbar
 
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.luminance
 import com.google.accompanist.systemuicontroller.SystemUiController
@@ -19,3 +21,7 @@ fun SystemUiController.setStatusBarColor(
         setStatusBarColor(color, useDarkIcons)
     }
 }
+
+val DefaultStatusBarUiModel: StatusBarUiModel
+    @Composable
+    get() = StatusBarUiModel(MaterialTheme.colorScheme.primary)

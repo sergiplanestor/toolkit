@@ -4,7 +4,7 @@ plugins {
 
 apply<com.splanes.plugins.JitpackPublishPlugin>()
 configure<com.splanes.plugins.JitpackPublishPluginExtension> {
-    artifactVersion.set(project.property("lib.base-arch.version") as String)
+    artifactVersion.set(project.property("lib.compose.base-arch.version") as String)
 }
 
 android {

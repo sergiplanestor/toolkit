@@ -18,4 +18,6 @@ include ':core' // TODO <- Delete
 include ':compose:ui:theme'
 include ':compose:ui:components'
 include ':compose:base-arch'
-include ':compose'
+include ':base:logger'
+include ':base:test'
+include ':base:extensions'
