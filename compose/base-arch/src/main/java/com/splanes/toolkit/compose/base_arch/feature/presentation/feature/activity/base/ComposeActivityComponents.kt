@@ -5,8 +5,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.runtime.*
-import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
+import com.splanes.toolkit.compose.base_arch.feature.presentation.feature.activity.navgraph.AnimatedNavHost
 import com.splanes.toolkit.compose.base_arch.logger.logStyle
 import timber.log.Timber
 
@@ -42,9 +42,11 @@ fun ComposeActivity.ActivityComponentWrapper() {
 fun ComposeActivity.NavHost() {
     var isLogged: Boolean by remember { mutableStateOf(false) }
     val controller = rememberAnimatedNavController()
+    val (route, transitions) = navGraphStartDestination()
     AnimatedNavHost(
         navController = controller,
-        startDestination = navGraphStartDestination(),
+        startDestinationRoute = route,
+        startDestinationTransition = transitions,
         builder = {
             onCreateNavGraph(controller)
             if (!isLogged) {

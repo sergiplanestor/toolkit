@@ -29,17 +29,21 @@ fun navGraphTransitionMap(
     popExit = popExit?.let { NavGraphTransitionBuilder.Exit(it) }
 )
 
-inline val Map<NavGraphTransitionType, NavGraphTransitionBuilder?>.enter: NavGraphTransitionBuilder.Enter?
-    get() = this[NavGraphTransitionType.Enter] as? NavGraphTransitionBuilder.Enter
+@OptIn(ExperimentalAnimationApi::class)
+inline val NavGraphTransition?.onEnter: NavGraphEnterTransitionBuilder?
+    get() = (this?.map?.get(NavGraphTransitionType.Enter) as? NavGraphTransitionBuilder.Enter)?.builder
 
-inline val Map<NavGraphTransitionType, NavGraphTransitionBuilder?>.popEnter: NavGraphTransitionBuilder.Enter?
-    get() = this[NavGraphTransitionType.PopEnter] as? NavGraphTransitionBuilder.Enter
+@OptIn(ExperimentalAnimationApi::class)
+inline val NavGraphTransition?.onPopEnter: NavGraphEnterTransitionBuilder?
+    get() = (this?.map?.get(NavGraphTransitionType.PopEnter) as? NavGraphTransitionBuilder.Enter)?.builder
 
-inline val Map<NavGraphTransitionType, NavGraphTransitionBuilder?>.exit: NavGraphTransitionBuilder.Exit?
-    get() = this[NavGraphTransitionType.Exit] as? NavGraphTransitionBuilder.Exit
+@OptIn(ExperimentalAnimationApi::class)
+inline val NavGraphTransition?.onExit: NavGraphExitTransitionBuilder?
+    get() = (this?.map?.get(NavGraphTransitionType.Exit) as? NavGraphTransitionBuilder.Exit)?.builder
 
-inline val Map<NavGraphTransitionType, NavGraphTransitionBuilder?>.popExit: NavGraphTransitionBuilder.Exit?
-    get() = this[NavGraphTransitionType.PopExit] as? NavGraphTransitionBuilder.Exit
+@OptIn(ExperimentalAnimationApi::class)
+inline val NavGraphTransition?.onPopExit: NavGraphExitTransitionBuilder?
+    get() = (this?.map?.get(NavGraphTransitionType.PopExit) as? NavGraphTransitionBuilder.Exit)?.builder
 
 fun slideInHorizontally(
     duration: Int,

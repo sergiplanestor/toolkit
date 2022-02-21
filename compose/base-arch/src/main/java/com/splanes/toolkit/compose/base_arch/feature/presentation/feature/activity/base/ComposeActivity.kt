@@ -2,7 +2,6 @@ package com.splanes.toolkit.compose.base_arch.feature.presentation.feature.activ
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.annotation.CallSuper
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
@@ -13,6 +12,7 @@ import com.google.accompanist.systemuicontroller.SystemUiController
 import com.splanes.toolkit.compose.base_arch.feature.presentation.feature.activity.base.config.ComposeActivityConfig
 import com.splanes.toolkit.compose.base_arch.feature.presentation.feature.activity.base.logger.LifecycleLogger
 import com.splanes.toolkit.compose.base_arch.feature.presentation.feature.activity.base.logger.plantLifecycleObserver
+import com.splanes.toolkit.compose.base_arch.feature.presentation.feature.activity.navgraph.transition.NavGraphTransition
 import com.splanes.toolkit.compose.base_arch.feature.presentation.feature.activity.statusbar.DefaultStatusBarUiModel
 import timber.log.Timber
 
@@ -48,7 +48,7 @@ abstract class ComposeActivity : ComponentActivity() {
     }
 
     protected open fun onCreateActivityComponent() {
-        setContent {
+        setAppThemeContent {
             activityConfig = ComposeActivityConfig(statusBarUiModel = DefaultStatusBarUiModel)
             StatusBarColor()
             ActivityComponentWrapper()
@@ -58,7 +58,7 @@ abstract class ComposeActivity : ComponentActivity() {
 
     open fun onCreateTopBar(): @Composable () -> Unit = {}
     open fun onCreateBottomBar(): @Composable () -> Unit = {}
-    open fun navGraphStartDestination(): String {
+    open fun navGraphStartDestination(): Pair<String, NavGraphTransition?> {
         val msg = "Attempt to create ComposeActivity.NavHost without override " +
                 "`ComposeActivity.navGraphStartDestination` method."
         Timber.e(msg)

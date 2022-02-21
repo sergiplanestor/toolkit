@@ -9,9 +9,9 @@ sealed class NavGraphTransition(open val map: Map<NavGraphTransitionType, NavGra
 
     data class Lateral(val duration: Int = DURATION_MEDIUM) : NavGraphTransition(
         navGraphTransitionMap(
-            enter = { slideInHorizontally(duration = duration) { fullWidth -> -fullWidth } },
-            exit = { slideOutHorizontally(duration = duration) { NO_OFFSET } },
-            popEnter = { slideInHorizontally(duration = duration) { NO_OFFSET } },
+            enter = { slideInHorizontally(duration = duration) { fullWidth -> fullWidth } },
+            exit = { slideOutHorizontally(duration = duration) { fullWidth -> -fullWidth } },
+            popEnter = { slideInHorizontally(duration = duration) { fullWidth -> -fullWidth } },
             popExit = { slideOutHorizontally(duration = duration) { fullWidth -> fullWidth } }
         )
     )
@@ -27,18 +27,18 @@ sealed class NavGraphTransition(open val map: Map<NavGraphTransitionType, NavGra
 
     data class Modal(val duration: Int = DURATION_MEDIUM) : NavGraphTransition(
         navGraphTransitionMap(
-            enter = { slideInVertically(duration = duration) { fullHeight -> -fullHeight } },
-            exit = { ExitTransition.None },
-            popEnter = { EnterTransition.None },
+            enter = { slideInVertically(duration = duration) { fullHeight -> fullHeight } },
+            exit = { fadeOut(duration = duration) },
+            popEnter = { fadeIn(duration = duration) },
             popExit = { slideOutVertically(duration = duration) { fullHeight -> fullHeight } }
         )
     )
 
     data class PushUp(val duration: Int = DURATION_MEDIUM) : NavGraphTransition(
         navGraphTransitionMap(
-            enter = { slideInVertically(duration = duration) { fullHeight -> -fullHeight } },
-            exit = {slideOutVertically(duration = duration) { fullHeight -> -fullHeight } },
-            popEnter = { slideInVertically(duration = duration) { NO_OFFSET } },
+            enter = { slideInVertically(duration = duration) { fullHeight -> fullHeight } },
+            exit = {slideOutVertically(duration = duration) { fullHeight -> fullHeight } },
+            popEnter = { slideInVertically(duration = duration) { fullHeight -> fullHeight } },
             popExit = { slideOutVertically(duration = duration) { fullHeight -> fullHeight } }
         )
     )

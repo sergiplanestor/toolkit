@@ -7,7 +7,7 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.navigation.NavBackStackEntry
 
 @OptIn(ExperimentalAnimationApi::class)
-typealias NavGraphEnterTransitionBuilder = (AnimatedContentScope<NavBackStackEntry>.() -> EnterTransition?)
+typealias NavGraphEnterTransitionBuilder = (AnimatedContentScope<NavBackStackEntry>.() -> EnterTransition)
 
 @OptIn(ExperimentalAnimationApi::class)
-typealias NavGraphExitTransitionBuilder = (AnimatedContentScope<NavBackStackEntry>.() -> ExitTransition?)
+typealias NavGraphExitTransitionBuilder = (AnimatedContentScope<NavBackStackEntry>.() -> ExitTransition)

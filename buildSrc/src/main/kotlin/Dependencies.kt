@@ -16,6 +16,8 @@ object DependencyVersion {
     const val composeNavigation = "2.5.0-alpha02"
     const val composeAccompanistNavigationAnim = "0.24.2-alpha"
     const val composeSystemUi = "0.24.1-alpha"
+
+    const val toolkitComposeUiTheme = "1.0.0"
 }
 
 object Dependency {
@@ -39,6 +41,8 @@ object Dependency {
     const val composeAccompanistNavigationAnim = "com.google.accompanist:accompanist-navigation-animation:${DependencyVersion.composeAccompanistNavigationAnim}"
     const val androidxComposeViewModel = "androidx.lifecycle:lifecycle-viewmodel-compose:${DependencyVersion.composeNavigation}"
     const val composeSystemUi = "com.google.accompanist:accompanist-systemuicontroller:${DependencyVersion.composeSystemUi}"
+
+    const val toolkitComposeUiTheme = "com.github.sergiplanestor.toolkit:theme:${DependencyVersion.toolkitComposeUiTheme}"
 }
 
 fun DependencyHandler.androidCore() {
@@ -64,6 +68,10 @@ fun DependencyHandler.ktxCoroutines() {
 
 fun DependencyHandler.timber() {
     impl(Dependency.timberLogger)
+}
+
+fun DependencyHandler.toolkitComposeUiTheme() {
+    impl(Dependency.toolkitComposeUiTheme)
 }
 
 fun DependencyHandler.composeBase(isMaterial3: Boolean = true) {

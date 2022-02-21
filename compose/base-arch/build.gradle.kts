@@ -30,6 +30,8 @@ dependencies {
     timber()
 
     compose()
+    toolkitComposeUiTheme()
+
     ktxCoroutines()
 
     test()
