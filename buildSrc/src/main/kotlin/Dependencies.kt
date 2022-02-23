@@ -17,7 +17,7 @@ object DependencyVersion {
     const val composeAccompanistNavigationAnim = "0.24.2-alpha"
     const val composeSystemUi = "0.24.1-alpha"
 
-    const val toolkitComposeUiTheme = "1.0.0"
+    const val toolkitComposeUiTheme = "1.0.1-CT"
 }
 
 object Dependency {
