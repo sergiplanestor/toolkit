@@ -17,7 +17,7 @@ android {
 
     applyCompileOptions()
 
-    kotlinOptions { jvmTarget() }
+    kotlinOptions { applyKotlinOptions() }
 
     withFeatures(Feature.Compose)
 
