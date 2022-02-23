@@ -14,7 +14,7 @@ android {
 
     applyCompileOptions()
 
-    kotlinOptions { jvmTarget() }
+    kotlinOptions { applyKotlinOptions() }
 
     excludeCommonPackages()
 }
