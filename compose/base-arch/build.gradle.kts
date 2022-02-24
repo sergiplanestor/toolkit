@@ -24,13 +24,16 @@ android {
 }
 
 dependencies {
+
+    module(name = "compose:ui:components")
+
     androidCore()
     androidRuntime()
 
     timber()
 
     compose()
-    api(Dependency.toolkitComposeUiComponents)
+    //api(Dependency.toolkitComposeUiComponents)
 
     ktxCoroutines()
 

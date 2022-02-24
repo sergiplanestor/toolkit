@@ -9,6 +9,7 @@ import com.splanes.toolkit.compose.base_arch.feature.presentation.feature.compon
 import com.splanes.toolkit.compose.base_arch.feature.presentation.feature.component.contract.UiModel
 import com.splanes.toolkit.compose.base_arch.feature.presentation.feature.component.contract.UiSideEffect
 import com.splanes.toolkit.compose.base_arch.feature.presentation.feature.component.contract.UiState
+import com.splanes.toolkit.compose.base_arch.feature.presentation.feature.component.contract.utils.flatMap
 import com.splanes.toolkit.compose.base_arch.feature.presentation.feature.component.contract.utils.uiStateUninitialized
 import com.splanes.toolkit.compose.base_arch.feature.presentation.feature.component.viewmodel.utils.flowCollect
 import com.splanes.toolkit.compose.base_arch.feature.presentation.feature.component.viewmodel.utils.ioContext
@@ -30,7 +31,7 @@ abstract class ComponentViewModel<Model : UiModel, Event : UiEvent, SideEffect :
 
     protected open val uiStateAtStart: UiState<Model> by lazy { uiStateUninitialized() }
 
-    private val uiStateMutableState: MutableState<UiState<Model>> = mutableStateOf(uiStateAtStart)
+    private val uiStateMutableState: MutableState<UiState<Model>> by lazy { mutableStateOf(uiStateAtStart) }
     private val uiEventMutableSharedFlow: MutableSharedFlow<Event> = MutableSharedFlow()
     private val uiSideEffectChannel: Channel<SideEffect> = Channel()
 
@@ -45,8 +46,12 @@ abstract class ComponentViewModel<Model : UiModel, Event : UiEvent, SideEffect :
         launch { uiEventMutableSharedFlow.emit(uiEvent) }
     }
 
-    protected open fun updateUiState(update: (from: UiState<Model>) -> UiState<Model>) {
+    protected open fun updateUiState(update: (from: UiState<Model>) -> UiState<Model>) = launch(Dispatchers.Main) {
         uiStateMutableState.value = update(uiState.value)
+    }
+
+    protected open fun updateUiModel(update: (from: Model) -> Model) {
+        updateUiState { from -> from.flatMap(onReady = { update(it) }) }
     }
 
     protected open fun onUiSideEffect(builder: () -> SideEffect) {
