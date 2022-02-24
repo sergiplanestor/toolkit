@@ -18,6 +18,7 @@ object DependencyVersion {
     const val composeSystemUi = "0.24.1-alpha"
 
     const val toolkitComposeUiTheme = "1.0.1-CT"
+    const val toolkitComposeUiComponents = "1.0.0-CC"
 }
 
 object Dependency {
@@ -43,6 +44,7 @@ object Dependency {
     const val composeSystemUi = "com.google.accompanist:accompanist-systemuicontroller:${DependencyVersion.composeSystemUi}"
 
     const val toolkitComposeUiTheme = "com.github.sergiplanestor.toolkit:theme:${DependencyVersion.toolkitComposeUiTheme}"
+    const val toolkitComposeUiComponents = "com.github.sergiplanestor.toolkit:components:${DependencyVersion.toolkitComposeUiComponents}"
 }
 
 fun DependencyHandler.androidCore() {

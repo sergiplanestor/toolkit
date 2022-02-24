@@ -28,7 +28,7 @@ abstract class ComponentViewModel<Model : UiModel, Event : UiEvent, SideEffect :
     override val coroutineContext: CoroutineContext
         get() = Job() + Dispatchers.Default
 
-    protected val uiStateAtStart: UiState<Model> by lazy { uiStateUninitialized() }
+    protected open val uiStateAtStart: UiState<Model> by lazy { uiStateUninitialized() }
 
     private val uiStateMutableState: MutableState<UiState<Model>> = mutableStateOf(uiStateAtStart)
     private val uiEventMutableSharedFlow: MutableSharedFlow<Event> = MutableSharedFlow()

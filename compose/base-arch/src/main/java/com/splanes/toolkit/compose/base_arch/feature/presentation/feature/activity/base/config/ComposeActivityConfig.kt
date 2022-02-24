@@ -8,7 +8,6 @@ import com.splanes.toolkit.compose.base_arch.feature.presentation.feature.activi
 
 data class ComposeActivityConfig(
     val statusBarUiModel: StatusBarUiModel? = null,
-    val isSnackBarHost: Boolean = false,
     val containerColor: @Composable () -> Color = { MaterialTheme.colorScheme.background },
     val contentColor: @Composable () -> Color = { contentColorFor(containerColor()) },
 )

@@ -2,6 +2,11 @@ package com.splanes.toolkit.compose.base_arch.feature.presentation.feature.compo
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.splanes.toolkit.compose.base_arch.feature.presentation.feature.component.contract.UiEvent
+import com.splanes.toolkit.compose.base_arch.feature.presentation.feature.component.contract.UiModel
+import com.splanes.toolkit.compose.base_arch.feature.presentation.feature.component.contract.UiSideEffect
+import com.splanes.toolkit.compose.base_arch.feature.presentation.feature.component.contract.UiState
+import com.splanes.toolkit.compose.base_arch.feature.presentation.feature.component.viewmodel.ComponentViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -34,3 +39,13 @@ suspend fun <T> ViewModel.mainContext(block: suspend CoroutineScope.() -> T): T 
 
 suspend fun <T> ViewModel.defaultContext(block: suspend CoroutineScope.() -> T): T =
     withContext(Dispatchers.Default, block)
+
+fun <M : UiModel, E : UiEvent, SE : UiSideEffect> ComponentViewModel<M, E, SE>.updateUiStateIf(
+    condition: Boolean = uiState.value is UiState.Ready,
+    update: (from: UiState<M>) -> UiState<M>
+): UiState<M> =
+    if (condition) {
+        update(uiState.value)
+    } else {
+        uiState.value
+    }

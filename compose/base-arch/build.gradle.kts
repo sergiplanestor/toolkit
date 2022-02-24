@@ -30,7 +30,7 @@ dependencies {
     timber()
 
     compose()
-    toolkitComposeUiTheme()
+    api(Dependency.toolkitComposeUiComponents)
 
     ktxCoroutines()
 

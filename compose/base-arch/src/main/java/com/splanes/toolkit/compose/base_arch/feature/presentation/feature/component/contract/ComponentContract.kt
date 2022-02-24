@@ -6,12 +6,16 @@ interface UiEvent : ComponentContract
 
 interface UiModel : ComponentContract
 
-sealed interface UiSideEffect : ComponentContract {
-    interface UiEffect : UiSideEffect
-    interface UiNavRequest : UiSideEffect
-}
+interface UiSideEffect : ComponentContract
 
 sealed class UiState<out T : UiModel> : ComponentContract {
+
+    val isInitialized: Boolean get() = this !is Uninitialized
+    val isReady: Boolean get() = this is Ready
+    val isError: Boolean get() = this is Error
+    val isLoading: Boolean get() = this is Loading
+    val isNotLoadingNorUninitialized: Boolean get() = isInitialized && !isLoading
+
     class Uninitialized<out T : UiModel> : UiState<T>()
 
     data class Ready<out T : UiModel>(val data: T) : UiState<T>()

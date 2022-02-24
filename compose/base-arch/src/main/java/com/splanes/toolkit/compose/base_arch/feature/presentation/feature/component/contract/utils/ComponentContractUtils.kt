@@ -15,7 +15,7 @@ fun <T: UiModel> uiStateUninitialized() : UiState.Uninitialized<T> = UiState.Uni
 
 object EmptyUiEvent: UiEvent
 
-object EmptyUiSideEffect: UiSideEffect.UiEffect
+object EmptyUiSideEffect: UiSideEffect
 
 val uiSideEffectKeyDefault: String by lazy { "LaunchedSideEffect.DefaultKey" }
 
