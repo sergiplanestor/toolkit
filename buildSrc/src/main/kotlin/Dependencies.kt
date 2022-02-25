@@ -18,7 +18,7 @@ object DependencyVersion {
     const val composeSystemUi = "0.24.1-alpha"
 
     const val toolkitComposeUiTheme = "1.0.1-CT"
-    const val toolkitComposeUiComponents = "1.0.0-CC"
+    const val toolkitComposeUiComponents = "1.0.1-CC"
 }
 
 object Dependency {

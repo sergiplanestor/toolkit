@@ -2,10 +2,10 @@ plugins {
     libPlugins().forEach(::id)
 }
 
-/*apply<com.splanes.plugins.JitpackPublishPlugin>()
+apply<com.splanes.plugins.JitpackPublishPlugin>()
 configure<com.splanes.plugins.JitpackPublishPluginExtension> {
     artifactVersion.set(project.property("lib.compose.base-arch.version") as String)
-}*/
+}
 
 android {
     namespace = "com.splanes.toolkit.compose.base_arch"
@@ -25,15 +25,13 @@ android {
 
 dependencies {
 
-    module(name = "compose:ui:components")
-
     androidCore()
     androidRuntime()
 
     timber()
 
     compose()
-    //api(Dependency.toolkitComposeUiComponents)
+    api(Dependency.toolkitComposeUiComponents)
 
     ktxCoroutines()
 
