@@ -33,6 +33,7 @@ dependencies {
 
     composeBase()
     composeSystemUi()
+    composeNavigation()
     api(Dependency.toolkitComposeUiTheme)
 
     test()
