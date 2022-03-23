@@ -7,6 +7,7 @@ import com.splanes.toolkit.compose.base_arch.feature.domain.common.datetime.time
 import com.splanes.toolkit.compose.base_arch.feature.domain.common.datetime.timestamp.minus
 import com.splanes.toolkit.compose.base_arch.feature.domain.common.datetime.timestamp.now
 import com.splanes.toolkit.compose.base_arch.feature.domain.usecase.utils.log
+import java.util.concurrent.TimeUnit
 import kotlinx.coroutines.withTimeout
 
 interface UseCase<Params, Data> {
@@ -44,7 +45,7 @@ interface UseCase<Params, Data> {
         val id: String,
         val params: T,
         val timestamp: Timestamp = now(),
-        val timeout: TimeRange = timeout(20L),
+        val timeout: TimeRange = timeout(TimeUnit.SECONDS, time = 20L),
     ) {
         override fun toString() = buildString {
             appendLine("[UseCase.Request]")

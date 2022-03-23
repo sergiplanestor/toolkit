@@ -3,9 +3,13 @@ package com.splanes.toolkit.compose.base_arch.feature.domain.common.datetime.tim
 import com.splanes.toolkit.compose.base_arch.feature.domain.common.datetime.timestamp.Timestamp
 import com.splanes.toolkit.compose.base_arch.feature.domain.common.datetime.timestamp.now
 import com.splanes.toolkit.compose.base_arch.feature.domain.common.datetime.timestamp.timestamp
+import java.util.concurrent.TimeUnit
 
 fun timeout(millisToTimeout: Long) : TimeRange =
     TimeRange(from = now(), to = timestamp(millisToTimeout))
+
+fun timeout(unit: TimeUnit, time: Long) : TimeRange =
+    timeout(millisToTimeout = unit.toMillis(time))
 
 fun TimeRange.deadline(): Long =
     to.millis

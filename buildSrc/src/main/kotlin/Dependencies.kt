@@ -12,6 +12,7 @@ object DependencyVersion {
     const val compose = "1.1.0-rc03"
     const val composeMaterial = "1.2.0-alpha02"
     const val composeMaterial3 = "1.0.0-alpha04"
+    const val composeMaterialIcons = "1.2.0-alpha05"
     const val composeActivity = "1.4.0"
     const val composeNavigation = "2.5.0-alpha02"
     const val composeAccompanistNavigationAnim = "0.24.2-alpha"
@@ -36,6 +37,7 @@ object Dependency {
     const val androidxComposeUi = "androidx.compose.ui:ui:${DependencyVersion.compose}"
     const val androidxComposeMaterial = "androidx.compose.material:material:${DependencyVersion.composeMaterial}"
     const val androidxComposeMaterial3 = "androidx.compose.material3:material3:${DependencyVersion.composeMaterial3}"
+    const val androidxComposeMaterialIcons = "androidx.compose.material:material-icons-extended:${DependencyVersion.composeMaterialIcons}"
     const val androidxComposeUiPreview = "androidx.compose.ui:ui-tooling-preview:${DependencyVersion.compose}"
     const val androidxComposeActivity = "androidx.activity:activity-compose:${DependencyVersion.composeActivity}"
     const val androidxComposeNavigation = "androidx.navigation:navigation-compose:${DependencyVersion.composeNavigation}"
@@ -47,77 +49,86 @@ object Dependency {
     const val toolkitComposeUiComponents = "com.github.sergiplanestor.toolkit:components:${DependencyVersion.toolkitComposeUiComponents}"
 }
 
-fun DependencyHandler.androidCore() {
-    impl(Dependency.androidxCore)
+fun DependencyHandler.androidCore(isApi: Boolean = false) {
+    impl(Dependency.androidxCore, isApi = isApi)
 }
 
-fun DependencyHandler.androidRuntime() {
-    impl(Dependency.androidxRuntime)
+fun DependencyHandler.androidRuntime(isApi: Boolean = false) {
+    impl(Dependency.androidxRuntime, isApi = isApi)
 }
 
-fun DependencyHandler.androidExtensions() {
-    impl(Dependency.androidxExtensions)
+fun DependencyHandler.androidExtensions(isApi: Boolean = false) {
+    impl(Dependency.androidxExtensions, isApi = isApi)
 }
 
-fun DependencyHandler.androidViewModel() {
-    impl(Dependency.androidxViewModel)
+fun DependencyHandler.androidViewModel(isApi: Boolean = false) {
+    impl(Dependency.androidxViewModel, isApi = isApi)
 }
 
-fun DependencyHandler.ktxCoroutines() {
-    impl(Dependency.kotlinCoroutinesCore)
-    impl(Dependency.kotlinCoroutinesAndroid)
+fun DependencyHandler.ktxCoroutines(isApi: Boolean = false) {
+    impl(Dependency.kotlinCoroutinesCore, isApi = isApi)
+    impl(Dependency.kotlinCoroutinesAndroid, isApi = isApi)
 }
 
-fun DependencyHandler.timber() {
-    impl(Dependency.timberLogger)
+fun DependencyHandler.timber(isApi: Boolean = false) {
+    impl(Dependency.timberLogger, isApi = isApi)
 }
 
-fun DependencyHandler.toolkitComposeUiTheme() {
-    impl(Dependency.toolkitComposeUiTheme)
+fun DependencyHandler.toolkitComposeUiTheme(isApi: Boolean = false) {
+    impl(Dependency.toolkitComposeUiTheme, isApi = isApi)
 }
 
-fun DependencyHandler.composeBase(isMaterial3: Boolean = true) {
-    impl(Dependency.androidxComposeUi)
-    impl(Dependency.androidxComposeActivity)
-    impl(Dependency.androidxComposeUiPreview)
+fun DependencyHandler.composeBase(
+    isMaterial3: Boolean = true,
+    includeIconExtension: Boolean = true,
+    isApi: Boolean = false
+) {
+    impl(Dependency.androidxComposeUi, isApi = isApi)
+    impl(Dependency.androidxComposeActivity, isApi = isApi)
+    impl(Dependency.androidxComposeUiPreview, isApi = isApi)
     composeMaterial()
-    if (isMaterial3) composeMaterial3()
+    if (isMaterial3) composeMaterial3(isApi)
+    if (includeIconExtension) composeMaterialIcons(isApi)
 
     test(Test.androidxComposeJUnit, isUiTest = true)
 
     apply(Test.androidxComposeTooling, ImplType.DebugImpl)
 }
 
-fun DependencyHandler.composeMaterial() {
-    impl(Dependency.androidxComposeMaterial)
+fun DependencyHandler.composeMaterial(isApi: Boolean = false) {
+    impl(Dependency.androidxComposeMaterial, isApi = isApi)
 }
 
-fun DependencyHandler.composeMaterial3() {
-    impl(Dependency.androidxComposeMaterial3)
+fun DependencyHandler.composeMaterial3(isApi: Boolean = false) {
+    impl(Dependency.androidxComposeMaterial3, isApi = isApi)
 }
 
-fun DependencyHandler.composeNavigation(isNavAnim: Boolean = true) {
-    impl(Dependency.androidxComposeNavigation)
-    if (isNavAnim) composeNavigationAnim()
+fun DependencyHandler.composeMaterialIcons(isApi: Boolean = false) {
+    impl(Dependency.androidxComposeMaterialIcons, isApi = isApi)
 }
 
-fun DependencyHandler.composeNavigationAnim() {
-    impl(Dependency.composeAccompanistNavigationAnim)
+fun DependencyHandler.composeNavigation(isNavAnim: Boolean = true, isApi: Boolean = false) {
+    impl(Dependency.androidxComposeNavigation, isApi = isApi)
+    if (isNavAnim) composeNavigationAnim(isApi)
 }
 
-fun DependencyHandler.composeViewModel() {
-    impl(Dependency.androidxComposeViewModel)
+fun DependencyHandler.composeNavigationAnim(isApi: Boolean = false) {
+    impl(Dependency.composeAccompanistNavigationAnim, isApi = isApi)
 }
 
-fun DependencyHandler.composeSystemUi() {
-    impl(Dependency.composeSystemUi)
+fun DependencyHandler.composeViewModel(isApi: Boolean = false) {
+    impl(Dependency.androidxComposeViewModel, isApi = isApi)
 }
 
-fun DependencyHandler.compose() {
-    composeBase()
-    composeNavigation()
-    composeViewModel()
-    composeSystemUi()
+fun DependencyHandler.composeSystemUi(isApi: Boolean = false) {
+    impl(Dependency.composeSystemUi, isApi = isApi)
+}
+
+fun DependencyHandler.compose(isApi: Boolean = false) {
+    composeBase(isApi)
+    composeNavigation(isApi)
+    composeViewModel(isApi)
+    composeSystemUi(isApi)
 }
 
 fun DependencyHandler.test() {

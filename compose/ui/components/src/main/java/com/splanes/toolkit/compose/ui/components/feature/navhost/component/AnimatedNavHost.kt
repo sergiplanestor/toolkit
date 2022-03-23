@@ -10,10 +10,15 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import com.splanes.toolkit.compose.ui.components.feature.navhost.graph.NavGraphDestination
-import com.splanes.toolkit.compose.ui.components.feature.navhost.graph.transition.*
+import com.splanes.toolkit.compose.ui.components.feature.navhost.graph.transition.NavGraphEnterTransitionBuilder
+import com.splanes.toolkit.compose.ui.components.feature.navhost.graph.transition.NavGraphExitTransitionBuilder
+import com.splanes.toolkit.compose.ui.components.feature.navhost.graph.transition.NavGraphTransition
+import com.splanes.toolkit.compose.ui.components.feature.navhost.graph.transition.onEnter
+import com.splanes.toolkit.compose.ui.components.feature.navhost.graph.transition.onExit
+import com.splanes.toolkit.compose.ui.components.feature.navhost.graph.transition.onPopEnter
+import com.splanes.toolkit.compose.ui.components.feature.navhost.graph.transition.onPopExit
 
 @Composable
-@OptIn(ExperimentalAnimationApi::class)
 fun AnimatedNavHost(
     modifier: Modifier = Modifier,
     navController: NavHostController,

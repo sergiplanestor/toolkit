@@ -26,14 +26,14 @@ android {
 
 dependencies {
 
-    androidCore()
-    androidRuntime()
+    androidCore(isApi = true)
+    androidRuntime(isApi = true)
 
-    timber()
+    timber(isApi = true)
 
-    composeBase()
-    composeSystemUi()
-    composeNavigation()
+    composeBase(isApi = true)
+    composeSystemUi(isApi = true)
+    composeNavigation(isApi = true)
     api(Dependency.toolkitComposeUiTheme)
 
     test()
